@@ -1,3 +1,4 @@
+# folders
 node_modules
 
 # local env files
@@ -13,3 +14,6 @@ yarn-error.log*
 # Editor directories and files
 .vscode
 .idea
+
+# test folders
+coverage
