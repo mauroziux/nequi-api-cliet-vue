@@ -1,7 +1,19 @@
 {
   "name": "nequi-api-cliet-vue",
   "version": "0.1.0",
-  "private": true,
+  "description": "Ejemplo para el consumo del API de Nequi en Vue.js y Nuxt.js",
+  "keywords": [
+    "nequi",
+    "vue",
+    "nuxt",
+    "bancolombia"
+  ],
+  "author": {
+    "name": "Mauricio Suarez Vega",
+    "email": "mauroziux@gmail.com"
+  },
+  "license": "MIT",
+  "main": "src/main.js",
   "scripts": {
     "test": "jest"
   },
