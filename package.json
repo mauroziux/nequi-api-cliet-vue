@@ -1,6 +1,7 @@
 {
   "name": "nequi-api-cliet-vue",
-  "version": "0.1.0",
+  "version": "0.1.3",
+  "repository": "github:mauroziux/nequi-api-cliet-vue",
   "description": "Ejemplo para el consumo del API de Nequi en Vue.js y Nuxt.js",
   "keywords": [
     "nequi",
@@ -33,6 +34,9 @@
     "babel-jest": "^27.2.4",
     "jest": "^27.2.4",
     "vue-template-compiler": "^2.5.21"
+  },
+  "jest": {
+    "collectCoverage": true
   },
   "babel": {
     "presets": [

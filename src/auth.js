@@ -9,19 +9,18 @@ async function auth (options) {
   try {
     const authorization = `Basic ${ Buffer.from(`${ options.clientId }:${ options.clientSecret }`).toString('base64') }`
     
-    const headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Accept': 'application/json',
-      'Authorization': authorization
-    }
-    
     const endpoint = `${ options.authUri }?grant_type=${ options.authGrantType }`
     
     try {
       const response = await axios.request({
         url: endpoint,
         method: 'POST',
-        headers
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+          'Authorization': authorization
+        },
+        data:{}
       })
       
       if (!!response && response.status === 200 && response.data) {
