@@ -6,6 +6,7 @@ import { nequiHeaders } from '../utils'
 const RestEndpoint = '/payments/v2/-services-reverseservices-reversetransaction'
 const SUCCESS = '0'
 const NO_EXISTE = '2-CCSB000079' //No se encontro un dato en el core financiero, puede que la transacción o messageId no exista
+const ERROR_TECNICO = '20-07A' //No se encontro un dato en el core financiero, puede que la transacción o messageId no exista
 
 //Variable de configuración
 let config = {}
@@ -53,7 +54,7 @@ async function init () {
       } = data.ResponseMessage.ResponseHeader.Status
       
       if (statusCode === SUCCESS) return statusCode === SUCCESS
-      if (statusCode === NO_EXISTE) return false
+      if (statusCode === NO_EXISTE || statusCode === ERROR_TECNICO) return false
       throw new Error(`Error ${ statusCode } = ${ statusDesc }`)
     } else {
       throw new Error('Unable to connect to Nequi, please check the information sent.')
