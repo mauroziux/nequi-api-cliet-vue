@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { nequiHeaders } from '../utils'
-jest.setTimeout(30000);
+
 
 //Definición de constantes
 const RestEndpoint = '/payments/v2/-services-reverseservices-reversetransaction'
