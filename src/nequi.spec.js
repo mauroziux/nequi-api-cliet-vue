@@ -1,6 +1,7 @@
 // nequi.spec.js
 import nequi from './main'
 import { createLocalVue } from '@vue/test-utils'
+jest.setTimeout(30000);
 
 // se requiere para leer las variables del .env
 require('dotenv').config()
