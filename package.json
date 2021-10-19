@@ -18,6 +18,9 @@
   "scripts": {
     "test": "jest"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "axios": "^0.22.0",
     "dotenv": "^10.0.0",

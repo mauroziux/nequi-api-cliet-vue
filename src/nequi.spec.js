@@ -41,7 +41,6 @@ it('get qr nequi && check pendent paymentQR', async () => {
 
 it('check success paymentQR', async () => {
   const codeQR = 'C001-10011-123456S893'
-  const messageID = '123456S893'
   const { status } = await localVue.prototype.$nequi.getStatusPayment({ codeQR, messageID })
   
   return expect(status).toBe(REALIZADO)
@@ -49,7 +48,6 @@ it('check success paymentQR', async () => {
 
 it('revertion paymentQR', async () => {
   const value = '10'
-  const messageID = '123456SS7896' //cambiarlo por uno existente
   const phoneNumber = '3017707049' //cambiarlo por uno existente
   
   return expect(await localVue.prototype.$nequi.reverseTransaction({ value, messageID, phoneNumber })).toBe(false)
