@@ -1,6 +1,6 @@
 {
   "name": "nequi-api-cliet-vue",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "repository": "github:mauroziux/nequi-api-cliet-vue",
   "description": "Ejemplo para el consumo del API de Nequi en Vue.js y Nuxt.js",
   "keywords": [
