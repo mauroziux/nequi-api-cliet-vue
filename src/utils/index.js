@@ -21,7 +21,7 @@ export function nequiHeaders (config, ServiceOperation, RestEndpoint, ServiceNam
   
   const RequestHeader = {
     Channel: 'PQR03-C001',
-    RequestDate: moment(new Date()).format(),
+    RequestDate: moment(new Date()).format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
     MessageID: config.messageID,
     ClientID: config.clientId,
     Destination: {
