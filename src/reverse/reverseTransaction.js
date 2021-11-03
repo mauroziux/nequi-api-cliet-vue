@@ -26,12 +26,12 @@ async function init () {
       RequestHeader,
       RequestBody: {
         any: {
-          'reversionRQ': {
-            'phoneNumber': config.phoneNumber,
-            'value': config.value,
-            'code': 'NIT_1',
-            'messageId': config.messageID,
-            'type': 'payment'
+          reversionRQ: {
+            phoneNumber: config.phoneNumber,
+            value: config.value,
+            code: 'NIT_'+process.env.NEQUI_CLIENT_NIT,
+            messageId: config.messageID,
+            type: 'payment'
           }
         }
       }
