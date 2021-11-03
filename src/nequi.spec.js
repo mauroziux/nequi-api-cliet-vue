@@ -34,7 +34,7 @@ it('get qr nequi && check pendent paymentQR', async () => {
   const value = 10 //valor en pesos
   const reference = 'referencia' //Cualquier dato adicional relacionado con el cobro
   const codeQR = await localVue.prototype.$nequi.generateQR({ value, messageID, reference })
-  const { status } = await localVue.prototype.$nequi.getStatusPayment({ codeQR, messageID })
+  const { status }  = await localVue.prototype.$nequi.getStatusPayment({ codeQR, messageID })
   
   return expect(codeQR).toContain(messageID) && expect(status).toBe(PENDIENTE)
 })
