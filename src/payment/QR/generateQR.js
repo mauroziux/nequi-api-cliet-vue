@@ -20,7 +20,7 @@ async function init () {
       RequestBody: {
         any: {
           generateCodeQRRQ: {
-            code: 'NIT_1',
+            code: 'NIT_'+process.env.NEQUI_CLIENT_NIT,
             value: config.value,
             reference1: config.reference ? config.reference : 'reference1',
           }

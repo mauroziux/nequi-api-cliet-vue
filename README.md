@@ -36,7 +36,7 @@ import vue from 'vue';
 import nequi from 'nequi-api-client-vue'
 
 // add .env config settings here
-Vue.use(nequi,{ clientId, clientSecret, apiKey })
+Vue.use(nequi,{ clientId, clientSecret, apiKey,authUri, apiBasePath })
 ```
 
 ## 3. Metodos Nequi
@@ -87,17 +87,11 @@ this.$nequi.auth.getStatusPayment({ value, messageID, reference })
 
 ### Depósitos y Retiros
 
-Esta sección cuenta con 2 ejemplos que podrás encontrar alojado en la carpeta ```/src/deposit_withdrawal/```.
-
-- **Validar una cuenta**: En el archivo ```/src/deposit_withdrawal/ValidateClient.js``` podrá encontrar el código para validar una cuenta.
-
-- **Recargar una cuenta**: En el archivo ```/src/deposit_withdrawal/ChargeAccount.js``` podrá encontrar el código para recargar una cuenta.
+Pendiente de desarrollo
 
 ### Pagos con notificación
 
-Esta sección cuenta con 1 ejemplo que podrá encontrar alojado en la carpeta ```/src/payment_push/```.
-
-- **Solicitu de pago**: En el archivo ```/src/payment_push/UnregisteredPaymentRequest.js``` podrá encontrar el código para solicitar un pago mediante notificación push.
+Pendiente de desarrollo
 
 ## Integrating with Nuxt
 Create `/plugins/nequi-api-client-vue.js` and add the following to it
@@ -106,7 +100,7 @@ import Vue from 'vue'
 import nequi from 'nequi-api-client-vue'
 
 // add .env config settings here
-Vue.use(nequi,{ clientId, clientSecret, apiKey })
+Vue.use(nequi,{ clientId, clientSecret, apiKey, authUri, apiBasePath })
 export default nequi
 ```
 Load the plugin in `nuxt.config.js`:
