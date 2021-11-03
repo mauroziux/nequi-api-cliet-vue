@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { nequiHeaders } from '../../utils'
+import { nequiHeaders } from '../utils'
 
 //Definición de constantes
 const RestEndpoint = '/payments/v2/-services-paymentservice-getstatuspayment'
@@ -22,7 +22,7 @@ async function init () {
       RequestBody: {
         any: {
           getStatusPaymentRQ: {
-            codeQR: config.codeQR,
+            codeQR: config.code,
           }
         }
       }

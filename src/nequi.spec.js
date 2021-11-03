@@ -33,15 +33,27 @@ it('get qr nequi && check pendent paymentQR', async () => {
   expect.assertions(1)
   const value = 10 //valor en pesos
   const reference = 'referencia' //Cualquier dato adicional relacionado con el cobro
-  const codeQR = await localVue.prototype.$nequi.generateQR({ value, messageID, reference })
-  const { status }  = await localVue.prototype.$nequi.getStatusPayment({ codeQR, messageID })
+  const code = await localVue.prototype.$nequi.generateQR({ value, messageID, reference })
+  const { status }  = await localVue.prototype.$nequi.getStatusPayment({ code, messageID })
   
-  return expect(codeQR).toContain(messageID) && expect(status).toBe(PENDIENTE)
+  return expect(code).toContain(messageID) && expect(status).toBe(PENDIENTE)
+})
+
+it('get notificationPush && check pendent notificationPush', async () => {
+  expect.assertions(1)
+  const value = 10 //valor en pesos
+  const phoneNumber = 3017707049 //valor en pesos
+  const reference = 'referencia' //Cualquier dato adicional relacionado con el cobro
+  const code = await localVue.prototype.$nequi.generateNotificationPush({ phoneNumber, value, messageID, reference })
+  console.log('notification',code)
+  const { status }  = await localVue.prototype.$nequi.getStatusPayment({ code, messageID })
+  
+  return expect(code).toContain(messageID) && expect(status).toBe(PENDIENTE)
 })
 
 it('check success paymentQR', async () => {
-  const codeQR = 'C001-10011-123456S893'
-  const { status } = await localVue.prototype.$nequi.getStatusPayment({ codeQR, messageID })
+  const code = 'C001-10011-123456S893'
+  const { status } = await localVue.prototype.$nequi.getStatusPayment({ code, messageID })
   
   return expect(status).toBe(REALIZADO)
 })

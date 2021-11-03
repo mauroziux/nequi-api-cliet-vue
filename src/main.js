@@ -1,6 +1,7 @@
 import auth from './auth'
 import { generateQR } from './payment/QR/generateQR'
-import { getStatusPayment } from './payment/QR/getStatusPayment'
+import { generateNotificationPush } from './payment/notificationPush/unregisteredPayments'
+import { getStatusPayment } from './payment/getStatusPayment'
 import { reverseTransaction } from './reverse/reverseTransaction'
 
 const defaultOptions = {
@@ -38,16 +39,29 @@ export default {
         userOptions.token = await auth.getToken(userOptions)
         return await generateQR(userOptions, { value, messageID, reference })
       },
+  
+      /**
+       * Generar Notificación Push
+       * @param phoneNumber
+       * @param value
+       * @param messageID
+       * @param reference
+       * @returns {Promise<string>}
+       */
+      generateNotificationPush: async function ({ phoneNumber,value, messageID, reference }) {
+        userOptions.token = await auth.getToken(userOptions)
+        return await generateNotificationPush(userOptions, { phoneNumber, value, messageID, reference })
+      },
       
       /**
        * Verificar el estado de una transacción por QR
-       * @param codeQR
+       * @param code
        * @param messageID
        * @returns {Promise<{phoneNumber: string, status: string}>}
        */
-      getStatusPayment: async function ({ codeQR, messageID }) {
+      getStatusPayment: async function ({ code, messageID }) {
         userOptions.token = await auth.getToken(userOptions)
-        return await getStatusPayment(userOptions, { codeQR, messageID })
+        return await getStatusPayment(userOptions, { code, messageID })
       },
       
       /**
