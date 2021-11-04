@@ -65,24 +65,24 @@ let reference = '(string, optional): Campo opcional para guardar información ad
 
 this.$nequi.auth.generateQR({ value, messageID, reference })
 ```
-## Consultar pago QR: 
-En el archivo ```/src/payment/QR/getStatusPayment.js``` Permite a partir del código QR, consultar el estado del pago y verificar si el pago fue realizado o cancelado por alguna cuenta NEQUI.
+## Consultar pago: 
+En el archivo ```/src/payment/QR/getStatusPayment.js``` Permite a partir del código QR o transactionId, consultar el estado del pago y verificar si el pago fue realizado o cancelado por alguna cuenta NEQUI.
 ```js
 #variables
-let codeQR =  '(string): Identificador único o código del pago que se genera con el anterior servicio para generación de código QR'
+let code =  '(string): Identificador único o código del pago que se genera con el anterior servicio para generación de código QR o transationId'
 let messageID =  '(string): Identificador unico de la transacción, alfanumérico de longitud 10, atributo con proposito de trazabilidad'
 
-this.$nequi.auth.getStatusPayment({ value, messageID, reference })
+this.$nequi.auth.getStatusPayment({ code, messageID })
 ```
 
-## Reversar pago QR:
-En el archivo ```/src/payment/QR/getStatusPayment.js``` Permite a partir del código QR, consultar el estado del pago y verificar si el pago fue realizado o cancelado por alguna cuenta NEQUI.
+## Reversar pago:
+En el archivo ```/src/reverse/reverseTransaction.js``` Permite a partir del phoneNumber realizar una reversion parcial o total de una transaccion realizada con anterioridad,en la cuenta NEQUI.
 ```js
 #variables
-let codeQR =  '(string): Identificador único o código del pago que se genera con el anterior servicio para generación de código QR'
-let messageID =  '(string): Identificador unico de la transacción, alfanumérico de longitud 10, atributo con proposito de trazabilidad'
+let value =  '(numeric): valor en pesos de la transacción'
+let phoneNumber = '(numeric): celular Nequi'
 
-this.$nequi.auth.getStatusPayment({ value, messageID, reference })
+this.$nequi.auth.reverseTransaction({ value, phoneNumber })
 ```
 
 ### Depósitos y Retiros
@@ -90,8 +90,16 @@ this.$nequi.auth.getStatusPayment({ value, messageID, reference })
 Pendiente de desarrollo
 
 ### Pagos con notificación
+En el archivo ```/src/payment/notificationPush/generateNotificationPush.js``` Permite a partir del tipo y número de identificación de un comercio, un numero celular y un valor a cobrar, crear una solicitud push que llegará a la aplicación móvil NEQUI para concretar el pago.
+```js
+#variables
+let value =  '(numeric): valor en pesos de la transacción'
+let phoneNumber = '(numeric): celular Nequi'
+let messageID =  '(string): Identificador unico de la transacción, alfanumérico de longitud 10, atributo con proposito de trazabilidad'
+let reference = '(string, optional): Campo opcional para guardar información adicional de la transacción'
 
-Pendiente de desarrollo
+this.$nequi.auth.generateNotificationPush({ phoneNumber, value, messageID, reference })
+```
 
 ## Integrating with Nuxt
 Create `/plugins/nequi-api-client-vue.js` and add the following to it
